@@ -2,41 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Gitech Africa Design System - Professional, Modern, Pan-African */
 
 @layer base {
   :root {
+    /* Core brand colors - Professional tech with African warmth */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 215 25% 15%;
+    
+    /* Brand primary - Teal/Blue gradient base */
+    --primary: 188 95% 40%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 188 95% 30%;
+    --primary-light: 188 95% 60%;
+    
+    /* Health subsidiary - Teal + Blue */
+    --health-primary: 188 95% 40%;
+    --health-secondary: 212 95% 45%;
+    
+    /* Smart infrastructure - Deep Navy + Grey */
+    --smart-primary: 215 85% 25%;
+    --smart-secondary: 220 15% 40%;
+    
+    /* AgriTech - Green + Earth tones */
+    --agro-primary: 120 60% 35%;
+    --agro-secondary: 35 45% 45%;
+    
+    /* Supporting colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 215 25% 15%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 25% 15%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 15% 50%;
+    --accent: 188 95% 95%;
+    --accent-foreground: 215 25% 15%;
+    --border: 214 31% 91%;
+    --input: 214 31% 91%;
+    --ring: 188 95% 40%;
+    
+    /* Gradients for modern tech feel */
+    --gradient-primary: linear-gradient(135deg, hsl(188 95% 40%), hsl(212 95% 45%));
+    --gradient-health: linear-gradient(135deg, hsl(188 95% 40%), hsl(212 95% 45%));
+    --gradient-smart: linear-gradient(135deg, hsl(215 85% 25%), hsl(220 15% 40%));
+    --gradient-agro: linear-gradient(135deg, hsl(120 60% 35%), hsl(35 45% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(188 95% 40%) 0%, hsl(212 95% 45%) 50%, hsl(215 85% 25%) 100%);
+    
+    /* Shadows and effects */
+    --shadow-card: 0 4px 20px -2px hsl(188 95% 40% / 0.1);
+    --shadow-card-hover: 0 8px 40px -4px hsl(188 95% 40% / 0.2);
+    --shadow-glow: 0 0 40px hsl(188 95% 60% / 0.3);
+    
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    --radius: 0.75rem;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +127,63 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom utility classes for Gitech Africa */
+@layer components {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-health {
+    background: var(--gradient-health);
+  }
+  
+  .gradient-smart {
+    background: var(--gradient-smart);
+  }
+  
+  .gradient-agro {
+    background: var(--gradient-agro);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-spring {
+    transition: var(--transition-spring);
+  }
+  
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold transition-smooth hover:scale-105 shadow-card hover:shadow-card-hover;
+  }
+  
+  .card-interactive {
+    @apply bg-card border border-border rounded-xl p-6 transition-spring shadow-card hover:shadow-card-hover hover:-translate-y-2;
   }
 }
