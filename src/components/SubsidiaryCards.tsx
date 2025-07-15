@@ -1,6 +1,8 @@
 import { ArrowRight, Heart, Building2, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
+import { trackEvent } from "@/components/Analytics";
 import healthTech from "@/assets/health-tech.jpg";
 import smartInfrastructure from "@/assets/smart-infrastructure.jpg";
 import agritech from "@/assets/agritech.jpg";
@@ -39,6 +41,24 @@ const subsidiaries = [
 ];
 
 export const SubsidiaryCards = () => {
+  const navigate = useNavigate();
+
+  const handleSubsidiaryClick = (domain: string, title: string) => {
+    trackEvent('subsidiary_click', 'navigation', title);
+    
+    // Map domain to route
+    const routeMap: { [key: string]: string } = {
+      'health.gitech.africa': '/health',
+      'smart.gitech.africa': '/smart',
+      'agro.gitech.africa': '/agro'
+    };
+    
+    const route = routeMap[domain];
+    if (route) {
+      navigate(route);
+    }
+  };
+
   return (
     <section className="py-20 bg-gradient-to-b from-background to-accent/10">
       <div className="container mx-auto px-6">
@@ -103,7 +123,11 @@ export const SubsidiaryCards = () => {
                       {subsidiary.domain}
                     </div>
                     
-                    <Button className="w-full group" variant="outline">
+                    <Button 
+                      className="w-full group" 
+                      variant="outline"
+                      onClick={() => handleSubsidiaryClick(subsidiary.domain, subsidiary.title)}
+                    >
                       Enter Site
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>

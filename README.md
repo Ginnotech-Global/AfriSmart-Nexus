@@ -1,73 +1,177 @@
-# Welcome to your Lovable project
+# Gitech Africa - ICT Innovation Group
 
-## Project info
+A professional, modern, and mobile-responsive website for **Gitech Africa**, an ICT innovation group empowering Africa through smart infrastructure, AI-powered wellness, and AgriTech systems.
 
-**URL**: https://lovable.dev/projects/58eba556-c18c-48c1-b12a-b3a6b175070e
+**Live Project**: https://lovable.dev/projects/58eba556-c18c-48c1-b12a-b3a6b175070e
 
-## How can I edit this code?
+## 🌍 Website Structure
 
-There are several ways of editing your application.
+### Main Domain: `www.gitech.africa`
+Landing page and gateway introducing the unified vision of the group with links to three subsidiaries.
 
-**Use Lovable**
+### Subsidiaries (Subdomains)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/58eba556-c18c-48c1-b12a-b3a6b175070e) and start prompting.
+#### 🏥 `health.gitech.africa` - iTechnology Global Enterprises
+*Empowering Wellness Through Intelligent Technology*
+- QRMA health diagnostics & reporting
+- Remote health monitoring via wearables  
+- AI-powered preventive health insights
+- Virtual consultation platforms
+- Health tech SaaS for hospitals and wellness centers
 
-Changes made via Lovable will be committed automatically to this repo.
+#### 🏢 `smart.gitech.africa` - Ginno Technology Global Company Ltd.
+*Innovating the Future with Smart Infrastructure*
+- Smart estate design and development
+- AI and automation systems for public and private sector
+- Enterprise IT architecture and cybersecurity
+- Custom-built apps and eGovernment platforms
 
-**Use your preferred IDE**
+#### 🌱 `agro.gitech.africa` - iAgroConstruct Tech Solutions Company
+*Building Smart Farms and Sustainable Communities*
+- AI and IoT-enabled precision farming
+- Agro-processing and storage facilities
+- Smart housing for low-income communities
+- Renewable energy and rural infrastructure systems
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### ✅ Implemented Features
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Modern UI**: Clean, futuristic design with Pan-African brand feel
+- **Analytics Integration**: Google Analytics ready for tracking
+- **WhatsApp Integration**: Floating WhatsApp widget for lead generation
+- **Routing System**: React Router with subdomain structure simulation
+- **SEO Optimized**: Meta tags, Open Graph, and Twitter Cards
+- **Performance Optimized**: Fast loading with optimized images
 
-Follow these steps:
+### 🎨 Design System
+- **Color Themes**:
+  - iTechnology: Teal + Blue (`gradient-health`)
+  - GinnoTech: Deep Navy + Grey (`gradient-smart`) 
+  - iAgroConstruct: Green + Warm Earth tones (`gradient-agro`)
+- **Typography**: Modern font hierarchy with semantic spacing
+- **Components**: Reusable UI components with consistent styling
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🛠️ Development Setup
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## 📁 Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+├── components/
+│   ├── ui/              # Shadcn UI components
+│   ├── HeroSection.tsx  # Landing page hero
+│   ├── SubsidiaryCards.tsx # Subsidiary showcase
+│   ├── AboutSection.tsx # Company information
+│   ├── ContactSection.tsx # Contact form
+│   ├── Footer.tsx       # Site footer
+│   ├── Analytics.tsx    # Google Analytics
+│   └── WhatsAppWidget.tsx # WhatsApp integration
+├── pages/
+│   ├── Index.tsx        # Main landing page
+│   ├── HealthTech.tsx   # Health subsidiary page
+│   ├── SmartInfrastructure.tsx # Smart infra page
+│   ├── AgriTech.tsx     # AgriTech subsidiary page
+│   └── NotFound.tsx     # 404 page
+├── assets/              # Images and media
+├── lib/                 # Utility functions
+└── hooks/               # Custom React hooks
+```
 
-**Use GitHub Codespaces**
+## 🌐 Subdomain Configuration
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### For Production Deployment:
 
-## What technologies are used for this project?
+1. **DNS Configuration**: Set up CNAME records for subdomains:
+   ```
+   health.gitech.africa → CNAME → www.gitech.africa
+   smart.gitech.africa  → CNAME → www.gitech.africa
+   agro.gitech.africa   → CNAME → www.gitech.africa
+   ```
 
-This project is built with:
+2. **Server Configuration**: Configure your web server to route subdomains:
+   ```nginx
+   # Nginx example
+   server {
+       server_name health.gitech.africa;
+       return 301 https://www.gitech.africa/health;
+   }
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+3. **Analytics Setup**: Replace `G-XXXXXXXXXX` in `Analytics.tsx` with your Google Analytics tracking ID.
 
-## How can I deploy this project?
+4. **WhatsApp Setup**: Update the phone number in `WhatsAppWidget.tsx` with your business WhatsApp number.
+
+## 📱 Technology Stack
+- **Frontend**: React 18+ with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS with custom design tokens
+- **Routing**: React Router DOM
+- **UI Components**: Shadcn/ui components
+- **Icons**: Lucide React
+- **Analytics**: Google Analytics 4
+- **Communication**: WhatsApp Business API integration
+
+## 👥 Target Audience
+- Governments and public institutions
+- Health institutions and hospitals
+- Investors and venture capital firms
+- NGOs and development organizations
+- SMEs and startups
+- International partners seeking African ICT solutions
+
+## 📊 Analytics & Tracking
+- Google Analytics 4 integration
+- Event tracking for subsidiary navigation
+- Page view tracking
+- Custom conversion goals ready
+
+## 💬 Lead Generation
+- WhatsApp Business integration
+- Contact form with validation
+- Newsletter signup
+- CTA buttons with conversion tracking
+
+## 🛡️ Security & SEO
+- Content Security Policy ready
+- Social media meta tags
+- Structured data markup ready
+- SSL/HTTPS enforced (when deployed)
+
+## 📈 Performance
+- Optimized images with proper alt tags
+- Lazy loading for non-critical components
+- Minimal bundle size with tree shaking
+- Fast loading animations and transitions
+
+## 🔧 Deployment
 
 Simply open [Lovable](https://lovable.dev/projects/58eba556-c18c-48c1-b12a-b3a6b175070e) and click on Share -> Publish.
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
+### Custom Domain Setup
 
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## 👨‍💼 Leadership
+**Dr. Afebuameh I. Ogbesor** - Founder & CEO
+Visionary leader driving Africa's digital transformation through innovative ICT solutions.
+
+---
+
+For technical support or feature requests, please contact the development team.
