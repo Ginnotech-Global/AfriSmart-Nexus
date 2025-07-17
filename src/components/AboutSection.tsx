@@ -1,32 +1,24 @@
 import { Users, Target, Lightbulb, Globe } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-
-const pillars = [
-  {
-    icon: Lightbulb,
-    title: "Artificial Intelligence",
-    description: "Leveraging AI to solve complex African challenges in health, agriculture, and infrastructure."
-  },
-  {
-    icon: Globe,
-    title: "Cloud & IoT",
-    description: "Building connected ecosystems that enable real-time monitoring and smart decision making."
-  },
-  {
-    icon: Users,
-    title: "Healthcare Innovation",
-    description: "Democratizing healthcare access through technology and preventive health solutions."
-  },
-  {
-    icon: Target,
-    title: "Sustainable Development",
-    description: "Creating eco-friendly solutions that promote long-term environmental sustainability."
-  }
-];
-
+const pillars = [{
+  icon: Lightbulb,
+  title: "Artificial Intelligence",
+  description: "Leveraging AI to solve complex African challenges in health, agriculture, and infrastructure."
+}, {
+  icon: Globe,
+  title: "Cloud & IoT",
+  description: "Building connected ecosystems that enable real-time monitoring and smart decision making."
+}, {
+  icon: Users,
+  title: "Healthcare Innovation",
+  description: "Democratizing healthcare access through technology and preventive health solutions."
+}, {
+  icon: Target,
+  title: "Sustainable Development",
+  description: "Creating eco-friendly solutions that promote long-term environmental sustainability."
+}];
 export const AboutSection = () => {
-  return (
-    <section className="py-20 bg-background">
+  return <section className="py-20 bg-background">
       <div className="container mx-auto px-6">
         {/* Vision Statement */}
         <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in-up">
@@ -58,9 +50,10 @@ export const AboutSection = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {pillars.map((pillar, index) => {
-              const IconComponent = pillar.icon;
-              return (
-                <Card key={pillar.title} className="card-interactive text-center animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
+            const IconComponent = pillar.icon;
+            return <Card key={pillar.title} className="card-interactive text-center animate-scale-in" style={{
+              animationDelay: `${index * 0.1}s`
+            }}>
                   <CardContent className="p-6">
                     <div className="mb-4">
                       <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -74,9 +67,8 @@ export const AboutSection = () => {
                       </p>
                     </div>
                   </CardContent>
-                </Card>
-              );
-            })}
+                </Card>;
+          })}
           </div>
         </div>
         
@@ -96,12 +88,11 @@ export const AboutSection = () => {
               <div className="text-primary-light">Projects Delivered</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">15+</div>
+              <div className="text-4xl font-bold mb-2">3+</div>
               <div className="text-primary-light">Countries Served</div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
