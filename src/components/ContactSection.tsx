@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-
 export const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,11 +12,12 @@ export const ContactSection = () => {
     company: "",
     message: ""
   });
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
@@ -34,15 +34,20 @@ export const ContactSection = () => {
     });
 
     // Reset form
-    setFormData({ name: "", email: "", company: "", message: "" });
+    setFormData({
+      name: "",
+      email: "",
+      company: "",
+      message: ""
+    });
   };
-
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
-
-  return (
-    <section className="py-20 bg-gradient-to-b from-accent/5 to-background">
+  return <section className="py-20 bg-gradient-to-b from-accent/5 to-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -79,7 +84,7 @@ export const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                    <p className="text-muted-foreground">+234 (0) 800 GITECH</p>
+                    <p className="text-slate-950">+234 (0) 908 000 1559</p>
                     <p className="text-muted-foreground">+234 (0) 800 448 324</p>
                   </div>
                 </div>
@@ -139,25 +144,13 @@ export const ContactSection = () => {
                     <label className="block text-sm font-medium text-foreground mb-2">
                       Full Name *
                     </label>
-                    <Input
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => handleInputChange("name", e.target.value)}
-                      placeholder="Your full name"
-                      required
-                    />
+                    <Input type="text" value={formData.name} onChange={e => handleInputChange("name", e.target.value)} placeholder="Your full name" required />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
                       Email *
                     </label>
-                    <Input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange("email", e.target.value)}
-                      placeholder="your.email@example.com"
-                      required
-                    />
+                    <Input type="email" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} placeholder="your.email@example.com" required />
                   </div>
                 </div>
 
@@ -165,25 +158,14 @@ export const ContactSection = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Company/Organization
                   </label>
-                  <Input
-                    type="text"
-                    value={formData.company}
-                    onChange={(e) => handleInputChange("company", e.target.value)}
-                    placeholder="Your company name"
-                  />
+                  <Input type="text" value={formData.company} onChange={e => handleInputChange("company", e.target.value)} placeholder="Your company name" />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Message *
                   </label>
-                  <Textarea
-                    value={formData.message}
-                    onChange={(e) => handleInputChange("message", e.target.value)}
-                    placeholder="Tell us about your project or how we can help..."
-                    rows={5}
-                    required
-                  />
+                  <Textarea value={formData.message} onChange={e => handleInputChange("message", e.target.value)} placeholder="Tell us about your project or how we can help..." rows={5} required />
                 </div>
 
                 <Button type="submit" className="w-full btn-primary group">
@@ -195,6 +177,5 @@ export const ContactSection = () => {
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
