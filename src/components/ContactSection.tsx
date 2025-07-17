@@ -91,8 +91,8 @@ export const ContactSection = () => {
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Headquarters</h4>
                     <p className="text-muted-foreground">
-                      Innovation Drive, Technology Hub<br />
-                      Lagos, Nigeria
+                      20 Gana Street, Miatama<br />
+                      Abuja, Nigeria
                     </p>
                   </div>
                 </div>
