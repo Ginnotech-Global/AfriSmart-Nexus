@@ -76,7 +76,7 @@ export const SubsidiaryCards = () => {
           {subsidiaries.map((subsidiary, index) => {
             const IconComponent = subsidiary.icon;
             return (
-              <Card key={subsidiary.title} className="card-interactive group overflow-hidden animate-scale-in" style={{animationDelay: `${index * 0.2}s`}}>
+              <Card key={subsidiary.title} className="card-neon group overflow-hidden animate-scale-in" style={{animationDelay: `${index * 0.2}s`}}>
                 {/* Image Header */}
                 <div className="relative h-48 overflow-hidden">
                   <img 
@@ -124,8 +124,7 @@ export const SubsidiaryCards = () => {
                     </div>
                     
                     <Button 
-                      className="w-full group" 
-                      variant="outline"
+                      className="btn-secondary group" 
                       onClick={() => handleSubsidiaryClick(subsidiary.domain, subsidiary.title)}
                     >
                       Enter Site

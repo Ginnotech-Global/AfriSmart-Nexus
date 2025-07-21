@@ -2,7 +2,7 @@ import { Heart, Linkedin, Twitter, Mail, Phone } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-primary-dark to-primary text-white py-16">
+    <footer className="gradient-primary text-white py-16 shadow-glow-primary">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
@@ -13,13 +13,13 @@ export const Footer = () => {
               and agriculture. Building a sustainable and prosperous future for the continent.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors">
+              <a href="#" className="glass-dark hover:bg-white/20 rounded-full p-2 transition-all duration-300 hover:scale-110">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors">
+              <a href="#" className="glass-dark hover:bg-white/20 rounded-full p-2 transition-all duration-300 hover:scale-110">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="mailto:info@gitech.africa" className="bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors">
+              <a href="mailto:info@gitech.africa" className="glass-dark hover:bg-white/20 rounded-full p-2 transition-all duration-300 hover:scale-110">
                 <Mail className="h-5 w-5" />
               </a>
             </div>

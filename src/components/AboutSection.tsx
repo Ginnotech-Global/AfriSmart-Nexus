@@ -51,7 +51,7 @@ export const AboutSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {pillars.map((pillar, index) => {
             const IconComponent = pillar.icon;
-            return <Card key={pillar.title} className="card-interactive text-center animate-scale-in" style={{
+            return <Card key={pillar.title} className="card-neon text-center animate-scale-in" style={{
               animationDelay: `${index * 0.1}s`
             }}>
                   <CardContent className="p-6">
@@ -73,7 +73,7 @@ export const AboutSection = () => {
         </div>
         
         {/* Stats Section */}
-        <div className="bg-gradient-to-r from-primary to-primary-dark rounded-2xl p-8 md:p-12 text-white animate-fade-in-up">
+        <div className="gradient-primary rounded-2xl p-8 md:p-12 text-white animate-fade-in-up shadow-glow-primary">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold mb-2">2019</div>

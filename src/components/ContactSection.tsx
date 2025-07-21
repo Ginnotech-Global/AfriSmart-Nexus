@@ -62,7 +62,7 @@ export const ContactSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div className="space-y-8 animate-fade-in-up">
-            <Card className="shadow-card">
+            <Card className="card-neon">
               <CardHeader>
                 <CardTitle className="text-2xl text-foreground">Get In Touch</CardTitle>
               </CardHeader>
@@ -85,7 +85,7 @@ export const ContactSection = () => {
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Phone</h4>
                     <p className="text-slate-950">+234 (0) 908 000 1559</p>
-                    <p className="text-slate-950">+234 (0) 815 777 7125</p>
+                    <p className="text-muted-foreground">+234 (0) 815 777 7125</p>
                   </div>
                 </div>
 
@@ -105,24 +105,24 @@ export const ContactSection = () => {
             </Card>
 
             {/* Quick Links to Subsidiaries */}
-            <Card className="shadow-card">
+            <Card className="card-neon">
               <CardHeader>
                 <CardTitle className="text-lg text-foreground">Quick Access</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button variant="outline" className="w-full justify-start" asChild>
+                <Button className="btn-secondary justify-start" asChild>
                   <a href="https://health.gitech.africa" target="_blank" rel="noopener noreferrer">
                     <div className="w-3 h-3 bg-health-primary rounded-full mr-3"></div>
                     iTechnology Health Solutions
                   </a>
                 </Button>
-                <Button variant="outline" className="w-full justify-start" asChild>
+                <Button className="btn-secondary justify-start" asChild>
                   <a href="https://smart.gitech.africa" target="_blank" rel="noopener noreferrer">
                     <div className="w-3 h-3 bg-smart-primary rounded-full mr-3"></div>
                     Ginno Smart Infrastructure
                   </a>
                 </Button>
-                <Button variant="outline" className="w-full justify-start" asChild>
+                <Button className="btn-secondary justify-start" asChild>
                   <a href="https://agro.gitech.africa" target="_blank" rel="noopener noreferrer">
                     <div className="w-3 h-3 bg-agro-primary rounded-full mr-3"></div>
                     iAgroConstruct Tech Solutions
@@ -133,7 +133,7 @@ export const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="shadow-card animate-scale-in">
+          <Card className="card-neon animate-scale-in">
             <CardHeader>
               <CardTitle className="text-2xl text-foreground">Send us a Message</CardTitle>
             </CardHeader>
@@ -168,7 +168,7 @@ export const ContactSection = () => {
                   <Textarea value={formData.message} onChange={e => handleInputChange("message", e.target.value)} placeholder="Tell us about your project or how we can help..." rows={5} required />
                 </div>
 
-                <Button type="submit" className="w-full btn-primary group">
+                <Button type="submit" className="btn-primary group">
                   Send Message
                   <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
