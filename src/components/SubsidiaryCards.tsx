@@ -11,7 +11,7 @@ const subsidiaries = [
   {
     title: "iTechnology Global Enterprises",
     subtitle: "Empowering Wellness Through Intelligent Technology",
-    domain: "health.gitech.africa",
+    domain: "wellness.gitech.africa",
     description: "QRMA health diagnostics, remote monitoring, AI-powered insights, and virtual consultation platforms transforming healthcare across Africa.",
     image: healthTech,
     icon: Heart,
@@ -48,7 +48,7 @@ export const SubsidiaryCards = () => {
     
     // Map domain to route
     const routeMap: { [key: string]: string } = {
-      'health.gitech.africa': '/health',
+      'wellness.gitech.africa': '/health',
       'smart.gitech.africa': '/smart',
       'agro.gitech.africa': '/agro'
     };
