@@ -1,9 +1,52 @@
+import { useState, useEffect } from "react";
 import { Heart, Activity, Shield, Smartphone, Brain, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { supabase } from "@/integrations/supabase/client";
+import { AuthModal } from "@/components/auth/AuthModal";
+import { Dashboard } from "@/components/health/Dashboard";
 import healthTech from "@/assets/health-tech.jpg";
 
 const HealthTech = () => {
+  const [user, setUser] = useState<any>(null);
+  const [session, setSession] = useState<any>(null);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        setLoading(false);
+      }
+    );
+
+    // Check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // If user is authenticated, show the dashboard
+  if (user && session) {
+    return <Dashboard />;
+  }
+
+  // If still loading, show loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Activity className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
+
   const services = [
     {
       icon: Activity,
@@ -42,7 +85,7 @@ const HealthTech = () => {
               <Heart className="h-8 w-8 text-teal-600" />
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">iTechnology Global Enterprises</h1>
-                <p className="text-teal-600 font-medium">health.gitech.africa</p>
+                <p className="text-teal-600 font-medium">wellness.gitech.africa</p>
               </div>
             </div>
             <Button variant="outline" onClick={() => window.location.href = '/'}>
@@ -66,7 +109,11 @@ const HealthTech = () => {
                 AI-powered insights, and comprehensive digital health solutions.
               </p>
               <div className="flex space-x-4">
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700">
+                <Button 
+                  size="lg" 
+                  className="bg-teal-600 hover:bg-teal-700"
+                  onClick={() => setShowAuthModal(true)}
+                >
                   Get Started
                 </Button>
                 <Button variant="outline" size="lg">
@@ -125,11 +172,25 @@ const HealthTech = () => {
             Partner with us to implement cutting-edge health technology solutions 
             that improve patient care and operational efficiency.
           </p>
-          <Button size="lg" variant="secondary">
-            Contact Our Health Tech Team
+          <Button 
+            size="lg" 
+            variant="secondary"
+            onClick={() => setShowAuthModal(true)}
+          >
+            Start Your Health Analysis
           </Button>
         </div>
       </section>
+
+      {/* Auth Modal */}
+      <AuthModal 
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onAuthSuccess={() => {
+          setShowAuthModal(false);
+          // User state will be updated via auth listener
+        }}
+      />
     </div>
   );
 };
