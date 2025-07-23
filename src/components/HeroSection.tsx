@@ -68,7 +68,8 @@ export const HeroSection = () => {
             <div className="card-neon animate-scale-in" style={{
             animationDelay: '0.4s'
           }}>
-              <div className="text-4xl font-bold text-electric-green mb-2 animate-pulse-glow">18+</div>
+              <div className="text-4xl font-bold text-electric-green mb-2 animate-pulse-glow">9
++</div>
               <div className="text-muted-foreground">Projects Delivered</div>
             </div>
             <div className="card-neon animate-scale-in" style={{
