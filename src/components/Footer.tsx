@@ -30,7 +30,7 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Our Subsidiaries</h4>
             <ul className="space-y-2 text-primary-light">
               <li>
-                <a href="https://health.gitech.africa" className="hover:text-white transition-colors">
+                <a href="https://wellness.gitech.africa" className="hover:text-white transition-colors">
                   iTechnology Global
                 </a>
               </li>

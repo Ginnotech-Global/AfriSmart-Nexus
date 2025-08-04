@@ -11,7 +11,7 @@ Landing page and gateway introducing the unified vision of the group with links 
 
 ### Subsidiaries (Subdomains)
 
-#### 🏥 `health.gitech.africa` - iTechnology Global Enterprises
+#### 🏥 `wellness.gitech.africa` - iTechnology Global Enterprises
 *Empowering Wellness Through Intelligent Technology*
 - QRMA health diagnostics & reporting
 - Remote health monitoring via wearables  
@@ -98,7 +98,7 @@ src/
 
 1. **DNS Configuration**: Set up CNAME records for subdomains:
    ```
-   health.gitech.africa → CNAME → www.gitech.africa
+   wellness.gitech.africa → CNAME → www.gitech.africa
    smart.gitech.africa  → CNAME → www.gitech.africa
    agro.gitech.africa   → CNAME → www.gitech.africa
    ```
@@ -107,7 +107,7 @@ src/
    ```nginx
    # Nginx example
    server {
-       server_name health.gitech.africa;
+       server_name wellness.gitech.africa;
        return 301 https://www.gitech.africa/health;
    }
    ```

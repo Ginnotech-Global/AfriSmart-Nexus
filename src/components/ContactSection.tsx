@@ -111,7 +111,7 @@ export const ContactSection = () => {
               </CardHeader>
               <CardContent className="space-y-3">
                 <Button className="btn-secondary justify-start" asChild>
-                  <a href="https://health.gitech.africa" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wellness.gitech.africa" target="_blank" rel="noopener noreferrer">
                     <div className="w-3 h-3 bg-health-primary rounded-full mr-3"></div>
                     iTechnology Health Solutions
                   </a>
