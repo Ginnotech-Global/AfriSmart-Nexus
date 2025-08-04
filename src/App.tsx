@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import HealthTech from "./pages/HealthTech";
 import SmartInfrastructure from "./pages/SmartInfrastructure";
 import AgriTech from "./pages/AgriTech";
+import PaymentSuccess from "./pages/PaymentSuccess";
 import { Analytics } from "@/components/Analytics";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/health" element={<HealthTech />} />
           <Route path="/smart" element={<SmartInfrastructure />} />
           <Route path="/agro" element={<AgriTech />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

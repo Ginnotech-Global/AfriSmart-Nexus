@@ -1,8 +1,12 @@
-import { useState } from "react";
-import { Leaf, Camera, MessageCircle, MapPin, TrendingUp, ShoppingCart, BookOpen, Cloud } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Leaf, Camera, MessageCircle, MapPin, TrendingUp, ShoppingCart, BookOpen, Cloud, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { supabase } from "@/integrations/supabase/client";
+import { AuthModal } from "@/components/auth/AuthModal";
+import { PaymentPlans } from "@/components/payment/PaymentPlans";
+import { usePaymentAccess } from "@/hooks/usePaymentAccess";
 import { CropDiagnosis } from "@/components/agri/CropDiagnosis";
 import { WeatherCalendar } from "@/components/agri/WeatherCalendar";
 import { AdvisoryBot } from "@/components/agri/AdvisoryBot";
@@ -13,6 +17,114 @@ import agritech from "@/assets/agritech.jpg";
 
 const AgriTech = () => {
   const [activeTab, setActiveTab] = useState("home");
+  const [user, setUser] = useState<any>(null);
+  const [session, setSession] = useState<any>(null);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const { hasAccess, subscription, loading: accessLoading, refreshAccess } = usePaymentAccess('agro', user);
+
+  useEffect(() => {
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        setLoading(false);
+      }
+    );
+
+    // Check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // If still loading, show loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
+
+  // If user is not authenticated, show auth modal prompt
+  if (!user || !session) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-green-50 to-yellow-50">
+        {/* Header */}
+        <header className="bg-white shadow-sm border-b">
+          <div className="container mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <Leaf className="h-8 w-8 text-green-600" />
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-900">FarmAI Assistant</h1>
+                  <p className="text-green-600 font-medium">agro.gitech.africa</p>
+                </div>
+              </div>
+              <Button variant="outline" onClick={() => window.location.href = '/'}>
+                Back to Main Site
+              </Button>
+            </div>
+          </div>
+        </header>
+
+        <div className="container mx-auto px-6 py-20 text-center">
+          <h2 className="text-4xl font-bold mb-6">Welcome to FarmAI Assistant</h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Please create an account to access our AI-powered agricultural tools
+          </p>
+          <Button size="lg" onClick={() => setShowAuthModal(true)}>
+            Sign Up / Sign In
+          </Button>
+        </div>
+
+        <AuthModal 
+          isOpen={showAuthModal}
+          onClose={() => setShowAuthModal(false)}
+          onAuthSuccess={() => {
+            setShowAuthModal(false);
+          }}
+        />
+      </div>
+    );
+  }
+
+  // Show payment plans if user is authenticated but doesn't have access
+  if (user && session && !accessLoading && !hasAccess) {
+    return (
+      <div className="min-h-screen bg-background">
+        <header className="bg-white shadow-sm border-b">
+          <div className="container mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <Leaf className="h-8 w-8 text-green-600" />
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-900">FarmAI Assistant</h1>
+                  <p className="text-green-600 font-medium">agro.gitech.africa</p>
+                </div>
+              </div>
+              <Button variant="outline" onClick={() => window.location.href = '/'}>
+                Back to Main Site
+              </Button>
+            </div>
+          </div>
+        </header>
+        <PaymentPlans 
+          serviceType="agro" 
+          onPaymentSuccess={() => {
+            refreshAccess();
+          }} 
+        />
+      </div>
+    );
+  }
 
   const features = [
     {

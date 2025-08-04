@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Heart, Activity, Shield, Smartphone, Brain, Users } from "lucide-react";
+import { Heart, Activity, Shield, Smartphone, Brain, Users, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { Dashboard } from "@/components/health/Dashboard";
+import { PaymentPlans } from "@/components/payment/PaymentPlans";
+import { usePaymentAccess } from "@/hooks/usePaymentAccess";
 import healthTech from "@/assets/health-tech.jpg";
 
 const HealthTech = () => {
@@ -12,6 +14,9 @@ const HealthTech = () => {
   const [session, setSession] = useState<any>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showPaymentPlans, setShowPaymentPlans] = useState(false);
+
+  const { hasAccess, subscription, loading: accessLoading, refreshAccess } = usePaymentAccess('wellness', user);
 
   useEffect(() => {
     // Set up auth state listener
@@ -33,8 +38,38 @@ const HealthTech = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  // If user is authenticated, show the dashboard
-  if (user && session) {
+  // Show payment plans if user is authenticated but doesn't have access
+  if (user && session && !accessLoading && !hasAccess) {
+    return (
+      <div className="min-h-screen bg-background">
+        <header className="bg-white shadow-sm border-b">
+          <div className="container mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <Heart className="h-8 w-8 text-teal-600" />
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-900">iTechnology Global Enterprises</h1>
+                  <p className="text-teal-600 font-medium">wellness.gitech.africa</p>
+                </div>
+              </div>
+              <Button variant="outline" onClick={() => window.location.href = '/'}>
+                Back to Main Site
+              </Button>
+            </div>
+          </div>
+        </header>
+        <PaymentPlans 
+          serviceType="wellness" 
+          onPaymentSuccess={() => {
+            refreshAccess();
+          }} 
+        />
+      </div>
+    );
+  }
+
+  // If user is authenticated and has access, show the dashboard
+  if (user && session && hasAccess) {
     return <Dashboard />;
   }
 
