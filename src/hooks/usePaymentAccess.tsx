@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, domainConfig } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 
 interface Subscription {
@@ -16,7 +16,9 @@ interface PaymentAccessState {
   error: string | null;
 }
 
-export const usePaymentAccess = (serviceType: 'wellness' | 'agro', user: User | null) => {
+export const usePaymentAccess = (user: User | null) => {
+  // Use the current domain's service type
+  const serviceType = domainConfig.serviceType;
   const [state, setState] = useState<PaymentAccessState>({
     hasAccess: false,
     subscription: null,

@@ -22,7 +22,7 @@ const AgriTech = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const { hasAccess, subscription, loading: accessLoading, refreshAccess } = usePaymentAccess('agro', user);
+  const { hasAccess, subscription, loading: accessLoading, refreshAccess } = usePaymentAccess(user);
 
   useEffect(() => {
     // Set up auth state listener

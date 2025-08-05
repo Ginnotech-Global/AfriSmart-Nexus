@@ -16,7 +16,7 @@ const HealthTech = () => {
   const [loading, setLoading] = useState(true);
   const [showPaymentPlans, setShowPaymentPlans] = useState(false);
 
-  const { hasAccess, subscription, loading: accessLoading, refreshAccess } = usePaymentAccess('wellness', user);
+  const { hasAccess, subscription, loading: accessLoading, refreshAccess } = usePaymentAccess(user);
 
   useEffect(() => {
     // Set up auth state listener
