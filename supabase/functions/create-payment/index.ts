@@ -54,21 +54,21 @@ serve(async (req) => {
 
     if (serviceType === 'wellness') {
       if (subscriptionType === 'one_off') {
-        amount = 500000; // 5k NGN in kobo (500,000 kobo = 5,000 NGN)
+        amount = 1200000; // 12k NGN in kobo (1,200,000 kobo = 12,000 NGN)
         sessionsRemaining = 1;
         productName = "Wellness Analysis - Single Session";
       } else {
-        amount = 1500000; // 15k NGN in kobo
-        sessionsRemaining = 4;
-        productName = "Wellness Analysis - Monthly Package (4 sessions)";
+        amount = 5000000; // 50k NGN in kobo
+        sessionsRemaining = 5;
+        productName = "Wellness Analysis - Monthly Package (5 sessions)";
       }
     } else { // agro
       if (subscriptionType === 'one_off') {
-        amount = 500000; // 5k NGN per section
+        amount = 1200000; // 12k NGN per section
         sessionsRemaining = 1;
         productName = "Agro Analysis - Single Section";
       } else {
-        amount = 1500000; // 15k NGN for 5 sections monthly
+        amount = 5000000; // 50k NGN for 5 sections monthly
         sessionsRemaining = 5;
         productName = "Agro Analysis - Monthly Package (5 sections)";
       }
