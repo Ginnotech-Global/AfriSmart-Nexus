@@ -117,7 +117,6 @@ const AgriTech = () => {
           </div>
         </header>
         <PaymentPlans 
-          serviceType="agro" 
           onPaymentSuccess={() => {
             refreshAccess();
           }} 

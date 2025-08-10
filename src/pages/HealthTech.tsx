@@ -59,7 +59,6 @@ const HealthTech = () => {
           </div>
         </header>
         <PaymentPlans 
-          serviceType="wellness" 
           onPaymentSuccess={() => {
             refreshAccess();
           }} 

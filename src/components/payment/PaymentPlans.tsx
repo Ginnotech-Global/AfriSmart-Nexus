@@ -2,17 +2,19 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Loader2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, domainConfig } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 interface PaymentPlansProps {
-  serviceType: 'wellness' | 'agro';
   onPaymentSuccess: () => void;
 }
 
-export const PaymentPlans = ({ serviceType, onPaymentSuccess }: PaymentPlansProps) => {
+export const PaymentPlans = ({ onPaymentSuccess }: PaymentPlansProps) => {
   const [loading, setLoading] = useState<string | null>(null);
   const { toast } = useToast();
+  
+  // Use the domain's service type
+  const serviceType = domainConfig.serviceType;
 
   const plans = {
     wellness: {
